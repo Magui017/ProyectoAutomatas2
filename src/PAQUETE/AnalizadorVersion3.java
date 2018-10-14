@@ -1,9 +1,7 @@
 package PAQUETE;
 import java.util.Scanner;
 import java.util.Vector;
- 
 public class AnalizadorVersion3 {
-	
 	Scanner leer = new Scanner(System.in);
 	//ARREGLO DE PALABRAS RESERVADAS
 	//String PR [] = new String []{"INICIO","FIN","if","while","int","boolean","false","true","println"};
@@ -359,4 +357,5 @@ class Tokens{
 			res=true;
 		return res;
 	}
+
 }

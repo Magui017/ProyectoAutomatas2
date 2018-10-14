@@ -1,11 +1,8 @@
 package PAQUETE;
-
 import java.util.Vector;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class ParserClass {
-	
 	int index;
 	Vector <Tokens> tokens;
 	Vector <Error> errors;
@@ -1430,4 +1427,5 @@ class Error{
 	public String getDesc(){
 		return desc;
 	}
-} 
+
+}

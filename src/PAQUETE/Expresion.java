@@ -1,7 +1,6 @@
 package PAQUETE;
 
-public class Expresion 
-{
+public class Expresion {
 	Tokens iden=ParserClass.variable;
 	Tokens op=ParserClass.variable; //se les asigna una variable con valor "" para no acarrear el error nullpointexception
 	Tokens iden2=ParserClass.variable; 

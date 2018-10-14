@@ -1,8 +1,7 @@
 package PAQUETE;
 
-
 public class VarDeclaration {
-	Tokens type,id;
+Tokens type,id;
 	
 	VarDeclaration(Tokens tipo, Tokens ident){
 		type=tipo;
@@ -16,5 +15,4 @@ public class VarDeclaration {
 	public String getId() {
 		return id.getToken();
 	}
-
 }

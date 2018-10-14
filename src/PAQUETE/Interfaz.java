@@ -1,5 +1,4 @@
 package PAQUETE;
-
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
@@ -14,10 +13,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
-
 public class Interfaz extends JFrame implements ActionListener, CaretListener, DocumentListener{
 	
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	JScrollPane Prog;
 	JScrollPane Res;
@@ -125,15 +123,14 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 	}
 	
 	public void Ventana(){
-		setSize(1200,700);
+		setSize(1200,600);
 		setLocationRelativeTo(null);
 		setLayout(null);
-		ancho = getWidth();
-		alto  = getHeight();
-		this.setIconImage(new ImageIcon("OW.png").getImage());
+		ancho= getWidth();
+		alto= getHeight();
 		this.setResizable(false);
-		
-		//------------------------------------------------------------->CREAR ELEMENTOS
+		this.setBackground(Color.BLACK);
+		//-------------------------------------------->CREAR ELEMENTOS
 		//CREAR OBJETO
 		Programa = new JTextArea();
 		Resultado = new JTextArea();
@@ -176,7 +173,7 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 		
 			Calcular.setSize		(((int)(ancho/6.5)),((int)(alto/17.5)));
 		
-		//NUEVO      CHECAR POSICIONES
+		//POSICIONES
 		ScrollSemantica.setLocation		(((int)(ancho/1.5)),((int)(alto/1.9)));
 		ScrollTablaSimbolos.setLocation		(((int)(ancho/1.5)),((int)(alto/9)));
 		Calcular.setLocation	(((int)(ancho/160)),((int)(alto/350)));		
@@ -210,7 +207,7 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 		FilaColumna.setBorder(null);
 		
 		
-		//COSAS AGREGADAS POR MI 
+		
 		//scrollpanes
 		ScrollSemantica.setSize			(((int)(ancho/2.4)),((int)(alto/3)));
 		ScrollTablaSimbolos.setSize			(((int)(ancho/2.4)),((int)(alto/3)));
@@ -225,9 +222,10 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 		
 		lbTablaSimbolos.setLocation	(((int)(ancho/1.5)),((int)(alto/20)));
 		lbSemantico.setLocation	(((int)(ancho/1.5)),((int)(alto/2.16)));
-		
+		/*---------------------------------------------------------------------------fwgtehyjrutk
 		Calcular.setIcon((new ImageIcon(((new ImageIcon("analyze.png")).getImage()).getScaledInstance
 				(Calcular.getWidth(), Calcular.getHeight(), java.awt.Image.SCALE_SMOOTH))));
+				*/
 	
 
 		//------------------------------------------------------------->AGREGAR LOS ELEMENTOS AL JFRAME
@@ -256,7 +254,7 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 		ResultadoSemantico.setDisabledTextColor(Color.black);
 		ResultadoTablaSimbolos.setEnabled(false);
 		ResultadoTablaSimbolos.setOpaque(true);
-		ResultadoTablaSimbolos.setDisabledTextColor(Color.black);
+		ResultadoTablaSimbolos.setDisabledTextColor(Color.BLACK);
 		
 		lbPrograma.setFont(new Font("Verdana", Font.BOLD, 16));
 		lbResultado.setFont(new Font("Verdana", Font.BOLD, 16));
@@ -264,11 +262,12 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 		lbSemantico.setFont(new Font("Verdana", Font.BOLD, 16));
 		lbTablaSimbolos.setFont(new Font("Verdana", Font.BOLD, 16));
 		
-		//Calcular.setOpaque(false);
+		Calcular.setOpaque(true);
 		Calcular.setContentAreaFilled(false);
-		//Calcular.setBorderPainted(false);
-		Calcular.setIcon((new ImageIcon(((new ImageIcon("")).getImage()).getScaledInstance
-				(Calcular.getWidth(), Calcular.getHeight(), java.awt.Image.SCALE_SMOOTH))));
+		Calcular.setBorderPainted(true);
+		Calcular.setText("Analizar");
+		Calcular.setIcon((new ImageIcon(((new ImageIcon("analyze.png")).getImage().getScaledInstance
+		(Calcular.getWidth(), Calcular.getHeight(), java.awt.Image.SCALE_SMOOTH)))));
 		setVisible(true);
 	}
 	
@@ -278,12 +277,8 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 			if (evento.getSource() == Calcular){
 				Resultado.setText("");
 				
-				if(Programa.getText().length()<1){
-					/*JOptionPane.showMessageDialog(null,
-			    	         "Agregue texto para escanear",
-			    	             "Información",JOptionPane.INFORMATION_MESSAGE);
-					*/
-					ResultadoParser.setText("Programa Correcto");
+				if(Programa.getText().length()<1){	
+					ResultadoParser.setText("Programa correcto");
 					ResultadoParser.setDisabledTextColor(Color.BLUE);
 					return;
 				}
@@ -387,5 +382,6 @@ public class Interfaz extends JFrame implements ActionListener, CaretListener, D
 	public static void main(String[] args) {
 		new Interfaz();
 	}
+
 
 }

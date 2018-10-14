@@ -1,7 +1,6 @@
 package PAQUETE;
 
 public class Statement {
-
 	Tokens id=ParserClass.variable;
 	Tokens operador;
 	Expresion expr;
@@ -51,4 +50,5 @@ public class Statement {
 		return true;
 	}
 		
+
 }
