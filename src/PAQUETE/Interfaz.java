@@ -35,17 +35,12 @@ private static final long serialVersionUID = 1L;
 	JLabel lbTotal;
 	JLabel lbTablaSimbolos;
 	JLabel lbSemantico;
-
 	JButton Calcular;
-	/*
-	boolean guarda = false;
-	String NombreDoc;*/
 	int ancho;
 	int alto;
 	
 	public static String TokenTipo;
 	public static String TabladeSimbolos;
-	
 	Vector <Tokens> VectorTokens = new Vector <Tokens> (20,1);
 	
 	//------------->NUEVO FILA Y COLUMNA CURSOR
@@ -61,59 +56,8 @@ private static final long serialVersionUID = 1L;
 	
 	public Interfaz(){
 		super("Compilador");
-		
 		Ventana();
 		Escuchas();
-		
-		/*
-		//LISTENER QUE SE ACTIVA CUANDO SE CAMBIA DE TAMAÑO LA INTERFAZ PARA PROPORCIONAR EL TAMAÑO Y POSICIÓN DE LOS OBJETOS
-		addComponentListener(new java.awt.event.ComponentAdapter() {
-	         public void componentResized(java.awt.event.ComponentEvent evt) {
-	     		ancho = getWidth();
-	    		alto  = getHeight();
-	    		
-	    		Prog.setSize			(((int)(ancho/3.4)),((int)(alto/1.48)));
-	    		Res.setSize				(((int)(ancho/3.4)),((int)(alto/3)));
-	    		RPar.setSize			(((int)(ancho/3.4)),((int)(alto/3)));
-	    		
-	    		ScrollSemantica.setSize			(((int)(ancho/3.4)),((int)(alto/3)));
-	    		ScrollTablaSimbolos.setSize				(((int)(ancho/3.4)),((int)(alto/3)));
-	    		lbPrograma.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
-	    		lbResultado.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
-	    		lbParser.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
-	    		lbSemantico.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
-	    		ResultadoTablaSimbolos.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
-	    		
-	    		Calcular.setSize		(((int)(ancho/6.5)),((int)(alto/17.5)));
-	    		
-	    		lbTotal.setSize			(((int)(ancho/4)),((int)(alto/14)));
-	    		FilaColumna.setSize		(((int)(ancho/3.0188)),((int)(alto/17.5)));
-	    		lbPrograma.setLocation	(((int)(ancho/28)),((int)(alto/20)));
-	    		lbResultado.setLocation	(((int)(ancho/3)),((int)(alto/20)));
-	    		lbParser.setLocation	(((int)(ancho/3)),((int)(alto/2.16)));
-	    		
-	    		//NUEVO       CHECAR LAS POSICIONES
-	    		lbTablaSimbolos.setLocation	(((int)(ancho/1.5)),((int)(alto/20)));
-	    		lbSemantico.setLocation	(((int)(ancho/1.5)),((int)(alto/2.16)));
-	    		Prog.setLocation		(((int)(ancho/160)),((int)(alto/9)));
-	    		Res.setLocation			(((int)(ancho/3)),((int)(alto/9)));  //arriba
-	    		RPar.setLocation		(((int)(ancho/3)),((int)(alto/1.9))); //abajo
-	    		
-	    		//NUEVO      CHECAR POSICIONES
-	    		ScrollSemantica.setLocation		(((int)(ancho/1.5)),((int)(alto/1.9)));
-	    		ScrollTablaSimbolos.setLocation		(((int)(ancho/1.5)),((int)(alto/9)));
-	    		Calcular.setLocation	(((int)(ancho/160)),((int)(alto/350)));		
-	    		lbTotal.setLocation		(((int)(ancho/3)),((int)(alto/2.35)));
-	    		FilaColumna.setLocation	(((int)(ancho/20)),((int)(alto/1.2727)));   		
-	    				
-	    		Calcular.setIcon((new ImageIcon(((new ImageIcon("analyze.png")).getImage()).getScaledInstance
-	    				(Calcular.getWidth(), Calcular.getHeight(), java.awt.Image.SCALE_SMOOTH))));
-	    	
-	    		validate();
-	         }
-	     });
-	*/
-	
 	}
 	
 	public void Escuchas(){
@@ -130,8 +74,6 @@ private static final long serialVersionUID = 1L;
 		alto= getHeight();
 		this.setResizable(false);
 		this.setBackground(Color.BLACK);
-		//-------------------------------------------->CREAR ELEMENTOS
-		//CREAR OBJETO
 		Programa = new JTextArea();
 		Resultado = new JTextArea();
 		ResultadoParser = new JTextArea();
@@ -153,16 +95,12 @@ private static final long serialVersionUID = 1L;
 		lbTotal = new JLabel ("Tokens = ");
 		lbTablaSimbolos = new JLabel("Tabla de Simbolos");
 		lbSemantico= new JLabel("Semántica");
-		
 		Calcular = new JButton();
-		
 		FilaColumna = new JTextField("Fila: 0 \t Columna: 0");
 		
-		//TAMAÑOS
 		Prog.setSize			(((int)(ancho/3.4)),((int)(alto/1.48)));
 		Res.setSize				(((int)(ancho/3.4)),((int)(alto/3)));
 		RPar.setSize			(((int)(ancho/3.4)),((int)(alto/3)));
-		
 		lbPrograma.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
 		lbResultado.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
 		lbParser.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
@@ -170,19 +108,15 @@ private static final long serialVersionUID = 1L;
 		ScrollTablaSimbolos.setSize				(((int)(ancho/3.4)),((int)(alto/3)));
 		lbSemantico.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
 		ResultadoTablaSimbolos.setSize		(((int)(ancho/2.2857)),((int)(alto/14)));
+		Calcular.setSize		(((int)(ancho/6.5)),((int)(alto/17.5)));
 		
-			Calcular.setSize		(((int)(ancho/6.5)),((int)(alto/17.5)));
-		
-		//POSICIONES
 		ScrollSemantica.setLocation		(((int)(ancho/1.5)),((int)(alto/1.9)));
 		ScrollTablaSimbolos.setLocation		(((int)(ancho/1.5)),((int)(alto/9)));
 		Calcular.setLocation	(((int)(ancho/160)),((int)(alto/350)));		
 		lbTotal.setLocation		(((int)(ancho/3)),((int)(alto/2.35)));
 		FilaColumna.setLocation	(((int)(ancho/20)),((int)(alto/1.2727)));   		
-		
 		lbTotal.setSize			(((int)(ancho/4)),((int)(alto/14)));
 		FilaColumna.setSize		(((int)(ancho/3.0188)),((int)(alto/17.5)));
-		//POSICIONES
 		lbPrograma.setLocation	(((int)(ancho/28)),((int)(alto/20)));
 		lbResultado.setLocation	(((int)(ancho/3)),((int)(alto/20)));
 		lbParser.setLocation	(((int)(ancho/3)),((int)(alto/2.16)));
@@ -190,45 +124,26 @@ private static final long serialVersionUID = 1L;
 		Res.setLocation			(((int)(ancho/3)),((int)(alto/9)));
 		lbTablaSimbolos.setLocation	(((int)(ancho/1.5)),((int)(alto/20)));
 		lbSemantico.setLocation	(((int)(ancho/1.5)),((int)(alto/2.16)));
-		
-		
-		//NUEVO RESULTADOS DEL PARSER
+	
 		RPar.setLocation		(((int)(ancho/3)),((int)(alto/1.9)));
-		
-		//--------------------
-		
 		Calcular.setLocation	(((int)(ancho/160)),((int)(alto/350)));
 		lbTotal.setLocation		(((int)(ancho/3)),((int)(alto/2.35)));
 		FilaColumna.setLocation	(((int)(ancho/20)),((int)(alto/1.2727)));
-		
 		FilaColumna.setEnabled(false);
 		FilaColumna.setOpaque(false);
 		FilaColumna.setDisabledTextColor(Color.black);
 		FilaColumna.setBorder(null);
 		
-		
-		
-		//scrollpanes
-		ScrollSemantica.setSize			(((int)(ancho/2.4)),((int)(alto/3)));
-		ScrollTablaSimbolos.setSize			(((int)(ancho/2.4)),((int)(alto/3)));
-		
+		ScrollSemantica.setSize			(((int)(ancho/3.5)),((int)(alto/3)));
+		ScrollTablaSimbolos.setSize			(((int)(ancho/3.5)),((int)(alto/3)));
 		ScrollTablaSimbolos.setLocation		(((int)(ancho/1.5)),((int)(alto/9)));
 		ScrollSemantica.setLocation		(((int)(ancho/1.5)),((int)(alto/1.9)));
 		
-		
-		//etiquetas
 		lbSemantico.setSize		(((int)(ancho/3)),((int)(alto/14)));
 		lbTablaSimbolos.setSize		(((int)(ancho/3)),((int)(alto/14)));
-		
 		lbTablaSimbolos.setLocation	(((int)(ancho/1.5)),((int)(alto/20)));
 		lbSemantico.setLocation	(((int)(ancho/1.5)),((int)(alto/2.16)));
-		/*---------------------------------------------------------------------------fwgtehyjrutk
-		Calcular.setIcon((new ImageIcon(((new ImageIcon("analyze.png")).getImage()).getScaledInstance
-				(Calcular.getWidth(), Calcular.getHeight(), java.awt.Image.SCALE_SMOOTH))));
-				*/
-	
-
-		//------------------------------------------------------------->AGREGAR LOS ELEMENTOS AL JFRAME
+		
 		add(lbPrograma);
 		add(lbResultado);
 		add(lbParser);
@@ -326,15 +241,9 @@ private static final long serialVersionUID = 1L;
 				//OCUPO VALIDAR ALGO AQUI (ES POR EL JTEXTAREA DE LA TABLA DE SIMBOLOS)
 				ResultadoTablaSimbolos.setText(TabladeSimbolos);
 				ResultadoSemantico.setText(ObjParser.ResultadoSemantico());
-				
-				
 			}
-			
 		}
-		
 	}
-	
-	
 	
 	//---------------->NUEVO METODO PARA INDICAR LA FILA Y COLUMNA DEL CURSOR
 	public void caretUpdate(CaretEvent e) {
@@ -342,13 +251,11 @@ private static final long serialVersionUID = 1L;
 		 
 		  int linea = 1;
 		  int columna = 1;
-		 
 		  try {
 		    int caretpos = editArea.getCaretPosition();
 		    linea= editArea.getLineOfOffset(caretpos);
 		    columna = caretpos - editArea.getLineStartOffset(linea);
-		    
-		    
+
 		    // Ya que las líneas las cuenta desde la 0
 		    linea += 1;
 		  } catch(Exception ex) { }
@@ -382,6 +289,4 @@ private static final long serialVersionUID = 1L;
 	public static void main(String[] args) {
 		new Interfaz();
 	}
-
-
 }
