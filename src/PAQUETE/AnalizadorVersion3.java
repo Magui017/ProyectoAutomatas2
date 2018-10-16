@@ -1,3 +1,4 @@
+
 package PAQUETE;
 import java.util.Scanner;
 import java.util.Vector;
@@ -8,11 +9,6 @@ public class AnalizadorVersion3 {
 	
 	//VECTOR CON LOS SIMBOLOS (OPERADORES Y SIMBOLOS) VALIDOS
  	Vector <Character> caracteresValidos = new Vector <Character> ();
- 	
- 	/*
- 	//vector para los numeros
- 	Vector <Integer> integerValidos= new Vector <Integer> ();
-	*/
  	
 	//VECTOR DE OBJETOS TIPO TOKEN, GUARDA LOS TOKEN EN UN OBJETO QUE TIENE EL TOKEN Y EL TIPO AL QUE PERTENECE
 	 Vector <Tokens> tabla = new Vector <Tokens> (20,1);
@@ -52,21 +48,6 @@ public class AnalizadorVersion3 {
 		caracteresValidos.add('+');		
 	}
 	
-	/*
-	public void llenarVectorNum() {
-		integerValidos.add(0);
-		integerValidos.add(1);
-		integerValidos.add(2);
-		integerValidos.add(3);
-		integerValidos.add(4);
-		integerValidos.add(5);
-		integerValidos.add(6);
-		integerValidos.add(7);
-		integerValidos.add(8);
-		integerValidos.add(9);
-		
-	}
-	*/
 	public void IdentificaToken(){
 		
 		//TOMA EL PRIMER CARACTER Y ENTRA A ANALIZARLO
