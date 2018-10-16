@@ -133,7 +133,7 @@ public class ParserClass {
  			
  			Cuadruples.addElement(new Cuadruple((Cuadruples.size()+1),"","","",""));
  			
- 			int posi;	
+ 			//int posi;	
  			//CHECAR LOS JUMPS 
  			System.out.println("");
  			System.out.println("\tCÓDIGO INTERMEDIO");
@@ -193,59 +193,7 @@ public class ParserClass {
  			
  			for(int i=0; i<Cuadruples.size(); i++)
  			{
- 				//Cuadruple=Cuadruple+Cuadruples.elementAt(i).toString()+"\n"; 				
- 			/*	if(Cuadruples.elementAt(i).COJ.equals("Jump"))
- 				{
- 					for(int j=i;j>0;j--)
- 					{
- 						if(Cuadruples.elementAt(j).RS.equals("&") && Cuadruples.elementAt(j).COJ.equals("JZ") && Cuadruples.elementAt(j-1).COJ.equals("CMP") )
- 						{
- 								Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j-1).Posicion); //quite -1
- 								//System.out.println(Cuadruples.elementAt(j).Posicion); 
- 								break;
- 						}
- 						else if(Cuadruples.elementAt(j).RS.equals("&") && Cuadruples.elementAt(j).COJ.equals("JZ") && !Cuadruples.elementAt(j-1).COJ.equals("CMP") )
- 						{
- 							Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j).Posicion);
-							break;
- 						}
- 					}
- 					
- 				} */
- 				
- 				/*
- 				else if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("&"))
- 				{	
- 					//GOTTA CHECK THIS ASAP
- 					for(int j=i;j<Cuadruples.size();j++)
- 					{
- 						if(Cuadruples.elementAt(j).COJ.equals("="))
- 						{
- 							for(int k=j;k<Cuadruples.size();k++)
- 							{
- 								if(Cuadruples.elementAt(k+1).COJ.equals("Jump"))
- 								{
- 									//System.out.println("ESTA");
- 									saltos++;
- 								}
- 								else
- 									break;
- 							}
- 							//System.out.println(Jumps);
- 							Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j+1).Posicion);
- 							break;
- 						}
- 						else
- 						{
- 							Cont++;
- 						}
- 					}
- 					
- 				}*/
- 				// ----------------------------------------IF
- 			
- 				// ESTO SI FUNCIONA LE DEBES QUITAR EL COMENTARIO
-  /* else if */if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("#"))
+ 				if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("#"))
  				{
  					for(int j=i;j<Cuadruples.size();j++)
  					{
@@ -292,9 +240,7 @@ public class ParserClass {
 		boolean Semantica=true;
 		String Var="";
 		String Var2="";
-		String Taip;
-		String Aid;
-	
+
 		//Pregunto para saber si el analisis sintactico fue correcto
  		if(res=="El programa es correcto ")
  		{
@@ -306,7 +252,7 @@ public class ParserClass {
  			//COMIENZO CON EL ANALISIS SEMANTICO
  			
  			//VER SI HAY VARIABLES CON EL MISMO NOMBRE REPETIDAS
- 		//	System.out.println("TAMAÑO "+VarDec.size());
+ 		   //System.out.println("TAMAÑO "+VarDec.size());
  			System.out.println("");
  			
  			for(int i=0; i<VarDec.size();i++)
@@ -338,8 +284,8 @@ public class ParserClass {
  			String ClasifExp;
  			
  			Expresion Xpre;
- 			If perro;
- 			While gato;
+ 			If si;
+ 			While mientras;
  			
  			String id;
  			String id2;
@@ -365,7 +311,7 @@ public class ParserClass {
  					//CHECO SI EL ID ESTA DECLARADO
  					while(j<VarDec.size())
  					{
- 						System.out.println(VarDec.elementAt(j).getId());
+ 						//System.out.println(VarDec.elementAt(j).getId());
  						String Aux=VarDec.elementAt(j).getId();
  						
  						if(id.equals(Aux))
@@ -402,7 +348,7 @@ public class ParserClass {
 	 						}
 	 						else if(k==VarDec.size()-1 && !id2.equals(Aux))
 	 						{
-	 							ressem="Error de Semántica -\n La variable "+id2+" NO esta declarada";
+	 							ressem="Error de Semántica -\n La variable "+id2+" no esta declarada";
 	 							return Semantica = false;
 	 						}
 	 						else
@@ -455,8 +401,8 @@ public class ParserClass {
  				else if(Clasif.equals("B"))
  				{
 
- 					perro=(If)States.elementAt(i);
- 					Xpre=perro.getExpresion();
+ 					si=(If)States.elementAt(i);
+ 					Xpre=si.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 
@@ -530,8 +476,8 @@ public class ParserClass {
  				//while
  				else
  				{
- 					gato=(While)States.elementAt(i);
- 					Xpre=gato.getExpresion();
+ 					mientras=(While)States.elementAt(i);
+ 					Xpre=mientras.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 
@@ -590,7 +536,7 @@ public class ParserClass {
 	 						
 	 						if(id2.equals(Aux))
 	 						{
-	 							System.out.println("Si esta declarada la variable: "+id2);
+	 							//System.out.println("Si esta declarada la variable: "+id2);
 	 							k=VarDec.size();
 	 						}
 	 						else if(k==VarDec.size()-1 && !id2.equals(Aux))
@@ -774,8 +720,8 @@ public class ParserClass {
  				//---------------------------------------------------if
  				else if(Clasif.equals("B"))
  				{
- 					perro=(If)States.elementAt(i);
- 					Xpre=perro.getExpresion();
+ 					si=(If)States.elementAt(i);
+ 					Xpre=si.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
  					
@@ -851,8 +797,8 @@ public class ParserClass {
  				//-------------------------------------------------------------------while
  				else
  				{
- 					gato=(While)States.elementAt(i);
- 					Xpre=gato.getExpresion();
+ 					mientras=(While)States.elementAt(i);
+ 					Xpre=mientras.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 

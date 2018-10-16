@@ -220,9 +220,6 @@ private static final long serialVersionUID = 1L;
 				
 				//NO SE PERMITE USAR EL PARSER SI HAY ERRORES EN EL ESCANEO
 				if(!ObjAnalizador.isCorrect()){
-					/*JOptionPane.showMessageDialog(null,
-			    	         "El programa debe tener solo tokens validos para usar el Parser",
-			    	             "Información",JOptionPane.INFORMATION_MESSAGE);*/
 					ResultadoParser.setDisabledTextColor(Color.RED);
 					ResultadoParser.setText("Programa Incorrecto");
 					return;
@@ -272,18 +269,14 @@ private static final long serialVersionUID = 1L;
 	public void insertUpdate(DocumentEvent e) {
 		Escaneado = false;
 		lbTotal.setText("Tokens = ");
-	//	lbErrores.setText("Errores = ");
     }
     public void removeUpdate(DocumentEvent e) {
     	Escaneado = false;
     	lbTotal.setText("Tokens = ");
-    	//lbErrores.setText("Errores = ");
     }
     public void changedUpdate(DocumentEvent e) {
-        //Plain text components do not fire these events
     	Escaneado = false;
     	lbTotal.setText("Tokens = ");
-    	//lbErrores.setText("Errores = ");
     }
 	
 	public static void main(String[] args) {

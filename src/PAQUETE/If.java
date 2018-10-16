@@ -6,13 +6,11 @@ public class If extends Statement {
 	Statement es;
 	String 	Clasificacion;
 	
-	
 	If(Tokens IF, Expresion e, Statement state, String Clasif){
 		super(state.id,state.operador,state.expr,state.Clasificacion);
 		this.i=IF;
 		this.expr=e;
 		this.Clasificacion=Clasif;
-		//this.st=state;
 	}
 	
 	//ESTE CONSTRUCTOR 
@@ -23,13 +21,10 @@ public class If extends Statement {
 		Clasificacion=Clasif;
 	}
 	
-	
-	//NUEVO 
 	public String getClasificacion(){
 		return Clasificacion;
 	}
 	
-
 	public String getIF() {
 		return i.getToken();
 	}
@@ -41,8 +36,5 @@ public class If extends Statement {
 	public String toString(){
 		return i.getToken()+"("+expr.toString()+")";
 	}
-	
-	
-	
 
 }

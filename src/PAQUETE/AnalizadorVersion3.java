@@ -4,7 +4,6 @@ import java.util.Vector;
 public class AnalizadorVersion3 {
 	Scanner leer = new Scanner(System.in);
 	//ARREGLO DE PALABRAS RESERVADAS
-	//String PR [] = new String []{"INICIO","FIN","if","while","int","boolean","false","true","println"};
 	String PR [] = new String []{"if","while","int","boolean"};
 	
 	//VECTOR CON LOS SIMBOLOS (OPERADORES Y SIMBOLOS) VALIDOS
@@ -14,6 +13,7 @@ public class AnalizadorVersion3 {
  	//vector para los numeros
  	Vector <Integer> integerValidos= new Vector <Integer> ();
 	*/
+ 	
 	//VECTOR DE OBJETOS TIPO TOKEN, GUARDA LOS TOKEN EN UN OBJETO QUE TIENE EL TOKEN Y EL TIPO AL QUE PERTENECE
 	 Vector <Tokens> tabla = new Vector <Tokens> (20,1);
 	
@@ -87,11 +87,9 @@ public class AnalizadorVersion3 {
 					tabla.addElement(new Tokens(token, "OPREL")); //AGREGA A UN VECTOR DE OBJETOS TIPO TOKEN
 					SiguienteCaracter();
 				} 
-				//else if(caracter == '-' || caracter == '*' || caracter == '/' || caracter == '+'){
 				else if(caracter == '(' || caracter == ')' || caracter == '+' || caracter == ';' || Character.isDigit(caracter)){ 
 					token+=caracter;
 					Interfaz.TokenTipo = Interfaz.TokenTipo + token+"\tERROR"+"  R"+renglon+":C"+(columna-token.length())+"\n";
-		//			ContError++;
 					Correcto = false;
 					SiguienteCaracter();
 				}
@@ -111,7 +109,6 @@ public class AnalizadorVersion3 {
 				if(caracter == '=' || caracter == '(' || caracter == ')' || caracter == '+'){
 					token+=caracter;
 					Interfaz.TokenTipo = Interfaz.TokenTipo + token+"\tERROR"+"  R"+renglon+":C"+(columna-token.length())+"\n";
-		//			ContError++;
 					Correcto = false;
 					SiguienteCaracter();
 				}
@@ -242,7 +239,6 @@ public class AnalizadorVersion3 {
 					}
 					Interfaz.TokenTipo = Interfaz.TokenTipo + token+"\tERROR"+"  R"+renglon+":C"+(columna-token.length())+"\n";
 					Correcto = false;
-
 					token="";
 					
 					break;
@@ -277,8 +273,6 @@ public class AnalizadorVersion3 {
 			}
 			if(tabla.elementAt(i).getToken().equals("=="))
 				tabla.elementAt(i).setCode(19); //Es ==
-			/*if(tabla.elementAt(i).getTipo().equals("NUME"))
-				tabla.elementAt(i).setCode(20); //Es numero */
 			if(tabla.elementAt(i).getTipo().equals("ID"))
 					tabla.elementAt(i).setCode(21); //Es identificado		
 		}
@@ -318,19 +312,15 @@ class Tokens{
 	String token;
 	String tipo;
 	int code;
-	//pruebafcvgbhjnkmllllllllllllllllfc vgbhjkl
-	////String valor;
 	
 	public Tokens(String t, String tp){
 		token = t;
-		tipo = tp;
-	
+		tipo = tp;	
 	}
 	public Tokens(String t, String tp, int n){
 		token = t;
 		tipo = tp;
-		code=n;
-	
+		code=n;	
 	}
 	
 	public void setCode(int n){

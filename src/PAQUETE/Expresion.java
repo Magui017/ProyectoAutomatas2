@@ -10,13 +10,9 @@ public class Expresion {
 	Expresion()
 	{
 		iden=ParserClass.variable;
-		//Clasificacion=ParserClass.Estring;
 	}
-	
-	
+		
 	//MODIFICACIONES PARA LA CLASIFICACION DE LAS EXPRESIONES
-	
-	
 	Expresion(Tokens id, String Clasif)
 	{
 		iden=id;
@@ -34,8 +30,7 @@ public class Expresion {
 	//NUEVA MODIFICACION
 	public String getClasificacion(){
 		return Clasificacion;
-	}
-	
+	}	
 	
 	public String getId() {
 		return iden.getToken();
@@ -54,7 +49,7 @@ public class Expresion {
 		//si el identificador estas vacio es por que no es una expresion D:
 		if(iden.getToken().equals(""))
 			return false;
-		return true; // y pss aqui si hay expresion :D
+		return true; 
 	}
 	
 	//para imprimir toda la expresion completa
