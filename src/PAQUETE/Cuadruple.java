@@ -1,6 +1,7 @@
 package PAQUETE;
 
 public class Cuadruple {
+
 	int Posicion; 
 	String COJ; //Comp Operador o Jump
 	String Par1;
@@ -55,4 +56,7 @@ public class Cuadruple {
 	}
 	
 
+		
 }
+
+

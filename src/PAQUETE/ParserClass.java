@@ -1,8 +1,11 @@
 package PAQUETE;
+
 import java.util.Vector;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
+
 public class ParserClass {
+	
 	int index;
 	Vector <Tokens> tokens;
 	Vector <Error> errors;
@@ -84,7 +87,7 @@ public class ParserClass {
  		
  		//HAY CODIGO BASURA 
  		if(currentToken.getCode()==2|| currentToken.getCode()==3||currentToken.getCode()==12 
- 				|| currentToken.getCode()==10 || currentToken.getCode()==11 || currentToken.getCode()==16 
+ 				|| currentToken.getCode()==10 || currentToken.getCode()==11 || currentToken.getCode()==16||currentToken.getCode()==17||currentToken.getCode()==18    
  				|| currentToken.getCode()==19 || currentToken.getCode()==9 || currentToken.getCode()==11 )
  		{
  			System.out.println("");
@@ -133,7 +136,7 @@ public class ParserClass {
  			
  			Cuadruples.addElement(new Cuadruple((Cuadruples.size()+1),"","","",""));
  			
- 			//int posi;	
+ 			int posi;	
  			//CHECAR LOS JUMPS 
  			System.out.println("");
  			System.out.println("\tCÓDIGO INTERMEDIO");
@@ -193,7 +196,59 @@ public class ParserClass {
  			
  			for(int i=0; i<Cuadruples.size(); i++)
  			{
- 				if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("#"))
+ 				//Cuadruple=Cuadruple+Cuadruples.elementAt(i).toString()+"\n"; 				
+ 			/*	if(Cuadruples.elementAt(i).COJ.equals("Jump"))
+ 				{
+ 					for(int j=i;j>0;j--)
+ 					{
+ 						if(Cuadruples.elementAt(j).RS.equals("&") && Cuadruples.elementAt(j).COJ.equals("JZ") && Cuadruples.elementAt(j-1).COJ.equals("CMP") )
+ 						{
+ 								Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j-1).Posicion); //quite -1
+ 								//System.out.println(Cuadruples.elementAt(j).Posicion); 
+ 								break;
+ 						}
+ 						else if(Cuadruples.elementAt(j).RS.equals("&") && Cuadruples.elementAt(j).COJ.equals("JZ") && !Cuadruples.elementAt(j-1).COJ.equals("CMP") )
+ 						{
+ 							Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j).Posicion);
+							break;
+ 						}
+ 					}
+ 					
+ 				} */
+ 				
+ 				/*
+ 				else if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("&"))
+ 				{	
+ 					//GOTTA CHECK THIS ASAP
+ 					for(int j=i;j<Cuadruples.size();j++)
+ 					{
+ 						if(Cuadruples.elementAt(j).COJ.equals("="))
+ 						{
+ 							for(int k=j;k<Cuadruples.size();k++)
+ 							{
+ 								if(Cuadruples.elementAt(k+1).COJ.equals("Jump"))
+ 								{
+ 									//System.out.println("ESTA");
+ 									saltos++;
+ 								}
+ 								else
+ 									break;
+ 							}
+ 							//System.out.println(Jumps);
+ 							Cuadruples.elementAt(i).setRS(""+Cuadruples.elementAt(j+1).Posicion);
+ 							break;
+ 						}
+ 						else
+ 						{
+ 							Cont++;
+ 						}
+ 					}
+ 					
+ 				}*/
+ 				// ----------------------------------------IF
+ 			
+ 				// ESTO SI FUNCIONA LE DEBES QUITAR EL COMENTARIO
+  /* else if */if(Cuadruples.elementAt(i).COJ.equals("JZ") && Cuadruples.elementAt(i).RS.equals("#"))
  				{
  					for(int j=i;j<Cuadruples.size();j++)
  					{
@@ -240,7 +295,9 @@ public class ParserClass {
 		boolean Semantica=true;
 		String Var="";
 		String Var2="";
-
+		String Taip;
+		String Aid;
+	
 		//Pregunto para saber si el analisis sintactico fue correcto
  		if(res=="El programa es correcto ")
  		{
@@ -252,7 +309,7 @@ public class ParserClass {
  			//COMIENZO CON EL ANALISIS SEMANTICO
  			
  			//VER SI HAY VARIABLES CON EL MISMO NOMBRE REPETIDAS
- 		   //System.out.println("TAMAÑO "+VarDec.size());
+ 		//	System.out.println("TAMAÑO "+VarDec.size());
  			System.out.println("");
  			
  			for(int i=0; i<VarDec.size();i++)
@@ -284,8 +341,8 @@ public class ParserClass {
  			String ClasifExp;
  			
  			Expresion Xpre;
- 			If si;
- 			While mientras;
+ 			If perro;
+ 			While gato;
  			
  			String id;
  			String id2;
@@ -311,7 +368,7 @@ public class ParserClass {
  					//CHECO SI EL ID ESTA DECLARADO
  					while(j<VarDec.size())
  					{
- 						//System.out.println(VarDec.elementAt(j).getId());
+ 						System.out.println(VarDec.elementAt(j).getId());
  						String Aux=VarDec.elementAt(j).getId();
  						
  						if(id.equals(Aux))
@@ -348,7 +405,7 @@ public class ParserClass {
 	 						}
 	 						else if(k==VarDec.size()-1 && !id2.equals(Aux))
 	 						{
-	 							ressem="Error de Semántica -\n La variable "+id2+" no esta declarada";
+	 							ressem="Error de Semántica -\n La variable "+id2+" NO esta declarada";
 	 							return Semantica = false;
 	 						}
 	 						else
@@ -401,8 +458,8 @@ public class ParserClass {
  				else if(Clasif.equals("B"))
  				{
 
- 					si=(If)States.elementAt(i);
- 					Xpre=si.getExpresion();
+ 					perro=(If)States.elementAt(i);
+ 					Xpre=perro.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 
@@ -476,8 +533,8 @@ public class ParserClass {
  				//while
  				else
  				{
- 					mientras=(While)States.elementAt(i);
- 					Xpre=mientras.getExpresion();
+ 					gato=(While)States.elementAt(i);
+ 					Xpre=gato.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 
@@ -536,7 +593,7 @@ public class ParserClass {
 	 						
 	 						if(id2.equals(Aux))
 	 						{
-	 							//System.out.println("Si esta declarada la variable: "+id2);
+	 							System.out.println("Si esta declarada la variable: "+id2);
 	 							k=VarDec.size();
 	 						}
 	 						else if(k==VarDec.size()-1 && !id2.equals(Aux))
@@ -622,8 +679,30 @@ public class ParserClass {
  						
  	
  						if(Typo.equals("boolean"))
- 						{
- 							if(Typo2.equals("int")&&Typo3.equals("boolean")&&Op.equals("+"))
+ 						{ 							
+ 							if(Typo2.equals("int")&&Typo3.equals("boolean")&&Op.equals("*"))
+							{
+								ressem=("Error de Semantica \n No se puede realizar una suma o comparación entre una variable de tipo "+Typo2+" ("+id2+") \n"+
+	 									" y una variable de tipo "+Typo3+" ("+id3+")");
+								return Semantica=false;
+							}
+							else if(Typo2.equals("boolean")&&Typo3.equals("int")&&Op.equals("*"))
+							{
+								ressem=("Error de Semantica \n No se puede realizar una suma o comparación entre una variable de tipo "+Typo2+" ("+id2+") \n"+
+	 									" y una variable de tipo "+Typo3+" ("+id3+")");
+								return Semantica=false;
+							}	
+							else if(Typo2.equals("boolean")&&Typo3.equals("boolean")&&Op.equals("*"))
+							{
+								ressem=("Error de Semantica \n No se puede realizar una suma entre dos variables\n de tipo boolean");
+								return Semantica=false;
+							}
+							else if(Typo2.equals("int")&&Typo3.equals("int")&& Op.equals("*"))
+							{
+								ressem=("Error de Semantica \nNo se puede asignar una suma de dos variables tipo int \n a una variable tipo boolean ");	
+								return Semantica=false;
+							}
+							else if(Typo2.equals("int")&&Typo3.equals("boolean")&&Op.equals("+"))
  							{
  								ressem=("Error de Semantica \n No se puede realizar una suma o comparación entre una variable de tipo "+Typo2+" ("+id2+") \n"+
  	 									" y una variable de tipo "+Typo3+" ("+id3+")");
@@ -645,6 +724,29 @@ public class ParserClass {
  								ressem=("Error de Semantica \nNo se puede asignar una suma de dos variables tipo int \n a una variable tipo boolean ");	
  								return Semantica=false;
  							}
+ 							else if(Typo2.equals("int")&&Typo3.equals("boolean")&&Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \n No se puede realizar una suma o comparación entre una variable de tipo "+Typo2+" ("+id2+") \n"+
+ 	 									" y una variable de tipo "+Typo3+" ("+id3+")");
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("boolean")&&Typo3.equals("int")&&Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \n No se puede realizar una suma o comparación entre una variable de tipo "+Typo2+" ("+id2+") \n"+
+ 	 									" y una variable de tipo "+Typo3+" ("+id3+")");
+ 								return Semantica=false;
+ 							}	
+ 							else if(Typo2.equals("boolean")&&Typo3.equals("boolean")&&Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \n No se puede realizar una suma entre dos variables\n de tipo boolean");
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("int")&&Typo3.equals("int")&& Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede asignar una suma de dos variables tipo int \n a una variable tipo boolean ");	
+ 								return Semantica=false;
+ 							}
+ 
  							else if(Typo2.equals("int")&&Typo3.equals("boolean") && Op.equals("=="))
  							{
  								ressem=("Error de Semantica \nNo se puede hacer una comparacion entre uan variable \n de tipo int y una variable de tipo boolean");	
@@ -660,7 +762,22 @@ public class ParserClass {
  						// INT = INT + INT 
  						else if(Typo.equals("int"))
  						{
- 							if((Typo2.equals("boolean") && Typo3.equals("boolean")) && Op.equals("+"))
+ 							if((Typo2.equals("boolean") && Typo3.equals("boolean")) && Op.equals("*"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede realizar una suma entre dos variables\n de tipo boolean");	
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("boolean")&&Typo3.equals("int")&& Op.equals("*"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede hacer una suma entre una variable \n de tipo boolean y una variable de tipo int");	
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("int")&&Typo3.equals("boolean")&& Op.equals("*"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede hacer una suma entre una variable \n de tipo int y una variable de tipo boolean");	
+ 								return Semantica=false;
+ 							}
+ 							else if((Typo2.equals("boolean") && Typo3.equals("boolean")) && Op.equals("+"))
  							{
  								ressem=("Error de Semantica \nNo se puede realizar una suma entre dos variables\n de tipo boolean");	
  								return Semantica=false;
@@ -671,6 +788,21 @@ public class ParserClass {
  								return Semantica=false;
  							}
  							else if(Typo2.equals("int")&&Typo3.equals("boolean")&& Op.equals("+"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede hacer una suma entre una variable \n de tipo int y una variable de tipo boolean");	
+ 								return Semantica=false;
+ 							}
+ 							else if((Typo2.equals("boolean") && Typo3.equals("boolean")) && Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede realizar una suma entre dos variables\n de tipo boolean");	
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("boolean")&&Typo3.equals("int")&& Op.equals("-"))
+ 							{
+ 								ressem=("Error de Semantica \nNo se puede hacer una suma entre una variable \n de tipo boolean y una variable de tipo int");	
+ 								return Semantica=false;
+ 							}
+ 							else if(Typo2.equals("int")&&Typo3.equals("boolean")&& Op.equals("-"))
  							{
  								ressem=("Error de Semantica \nNo se puede hacer una suma entre una variable \n de tipo int y una variable de tipo boolean");	
  								return Semantica=false;
@@ -720,8 +852,8 @@ public class ParserClass {
  				//---------------------------------------------------if
  				else if(Clasif.equals("B"))
  				{
- 					si=(If)States.elementAt(i);
- 					Xpre=si.getExpresion();
+ 					perro=(If)States.elementAt(i);
+ 					Xpre=perro.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
  					
@@ -754,7 +886,43 @@ public class ParserClass {
  	 		 				}
  	 		 			}	
  						
- 						if(Op.equals("+"))
+ 						if(Op.equals("+")||Op.equals("-")||Op.equals("*"))
+ 						{
+ 							ressem="Error de Semantica \n No puede haber una suma dentro de una condición If";
+ 							return Semantica = false;
+ 						}
+ 						else if(Op.equals("=="))
+ 						{
+ 							if(Typo2.equals("int") && Typo3.equals("boolean"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 							else if(Typo2.equals("boolean") && Typo3.equals("int"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 						}
+ 						if(Op.equals("*"))
+ 						{
+ 							ressem="Error de Semantica \n No puede haber una suma dentro de una condición If";
+ 							return Semantica = false;
+ 						}
+ 						else if(Op.equals("=="))
+ 						{
+ 							if(Typo2.equals("int") && Typo3.equals("boolean"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 							else if(Typo2.equals("boolean") && Typo3.equals("int"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 						}
+ 						if(Op.equals("-"))
  						{
  							ressem="Error de Semantica \n No puede haber una suma dentro de una condición If";
  							return Semantica = false;
@@ -797,8 +965,8 @@ public class ParserClass {
  				//-------------------------------------------------------------------while
  				else
  				{
- 					mientras=(While)States.elementAt(i);
- 					Xpre=mientras.getExpresion();
+ 					gato=(While)States.elementAt(i);
+ 					Xpre=gato.getExpresion();
  				
  					ClasifExp=Xpre.getClasificacion();
 
@@ -832,7 +1000,43 @@ public class ParserClass {
  	 		 				}
  	 		 			}	
 
- 						if(Op.equals("+"))
+ 						if(Op.equals("+")||Op.equals("-")||Op.equals("*"))
+ 						{
+ 							ressem="Error de Semantica \n No puede haber una suma dentro como parametro del ciclo While ";
+ 							return Semantica = false;
+ 						}
+ 						else if(Op.equals("=="))
+ 						{
+ 							if(Typo2.equals("int") && Typo3.equals("boolean"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 							else if(Typo2.equals("boolean") && Typo3.equals("int"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 						}
+ 						if(Op.equals("*"))
+ 						{
+ 							ressem="Error de Semantica \n No puede haber una suma dentro como parametro del ciclo While ";
+ 							return Semantica = false;
+ 						}
+ 						else if(Op.equals("=="))
+ 						{
+ 							if(Typo2.equals("int") && Typo3.equals("boolean"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 							else if(Typo2.equals("boolean") && Typo3.equals("int"))
+ 							{
+ 								ressem="Error de Semantica \n No se puede realizar una comparacion entre \n variables de tipo int y boolean ";
+ 	 							return Semantica = false;
+ 							}
+ 						}
+ 						if(Op.equals("-"))
  						{
  							ressem="Error de Semantica \n No puede haber una suma dentro como parametro del ciclo While ";
  							return Semantica = false;
@@ -920,10 +1124,22 @@ public class ParserClass {
 								{
 									//System.out.println((l)+" CMP\t"+Xpre.getId()+"\t"+Xpre.getId2()+"\t t"+(m));
 									Cuadruples.add(new Cuadruple(l,"CMP",Xpre.getId(),Xpre.getId2(),"t"+m));
-								}else 
+								}else if(Xpre.getOperador().equals("-"))
+								{	//System.out.println((l)+" +\t"+Xpre.getId()+"\t"+Xpre.getId2()+"\t t"+(m));
+									Cuadruples.add(new Cuadruple(l,"-",Xpre.getId(),Xpre.getId2(),"t"+m));
+								}	
+								else if(Xpre.getOperador().equals("*"))
+								{	//System.out.println((l)+" +\t"+Xpre.getId()+"\t"+Xpre.getId2()+"\t t"+(m));
+									Cuadruples.add(new Cuadruple(l,"*",Xpre.getId(),Xpre.getId2(),"t"+m));
+								}
+								else 
 								{	//System.out.println((l)+" +\t"+Xpre.getId()+"\t"+Xpre.getId2()+"\t t"+(m));
 									Cuadruples.add(new Cuadruple(l,"+",Xpre.getId(),Xpre.getId2(),"t"+m));
-								}	
+								}
+								
+								
+								
+								
 								//System.out.println((++l)+" =\tt"+(m++)+"\t\t "+States.elementAt(i).getId().token);
 								Cuadruples.add(new Cuadruple(++l,"=","t"+(m++),"",States.elementAt(i).getId().token));
 								
@@ -1251,7 +1467,7 @@ public class ParserClass {
  			Tokens id=currentToken;
  			nextToken();
  			//pregunta por el == o un +
- 			if(currentToken.getCode()==19||currentToken.getCode()==16){
+ 			if(currentToken.getCode()==19||currentToken.getCode()==16||currentToken.getCode()==17||currentToken.getCode()==18){
  				
  				Tokens op = currentToken;
  				nextToken();
@@ -1373,5 +1589,4 @@ class Error{
 	public String getDesc(){
 		return desc;
 	}
-
-}
+} 

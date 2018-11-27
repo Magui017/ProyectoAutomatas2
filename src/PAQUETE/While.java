@@ -1,6 +1,6 @@
 package PAQUETE;
-
 public class While extends Statement{
+	
 	Tokens w;
 	Expresion expr;
 	String 	Clasificacion;
@@ -37,6 +37,10 @@ public class While extends Statement{
 	public String toString(){
 		return w.getToken()+"("+expr.toString()+")";
 	}
-
-
+	
+	
+	
+	
+	
+	
 }

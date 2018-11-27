@@ -1,6 +1,6 @@
 package PAQUETE;
-
 public class Statement {
+
 	Tokens id=ParserClass.variable;
 	Tokens operador;
 	Expresion expr;
@@ -12,14 +12,16 @@ public class Statement {
 		operador=ParserClass.variable;
 		expr=new Expresion();
 	}
-
+	
+	//NUEVA MODIFICACION
 	Statement(Tokens iden, Tokens op, Expresion e, String Clasif){
 		id=iden;
 		operador=op;
 		expr=e;
 		Clasificacion=Clasif;
 	}
-
+	
+	//NUEVO
 	public String getClasificacion(){
 		return Clasificacion;
 	}
@@ -48,5 +50,4 @@ public class Statement {
 		return true;
 	}
 		
-
 }

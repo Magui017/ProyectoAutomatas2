@@ -1,6 +1,7 @@
 package PAQUETE;
 
-public class Expresion {
+public class Expresion 
+{
 	Tokens iden=ParserClass.variable;
 	Tokens op=ParserClass.variable; //se les asigna una variable con valor "" para no acarrear el error nullpointexception
 	Tokens iden2=ParserClass.variable; 
@@ -10,9 +11,13 @@ public class Expresion {
 	Expresion()
 	{
 		iden=ParserClass.variable;
+		//Clasificacion=ParserClass.Estring;
 	}
-		
+	
+	
 	//MODIFICACIONES PARA LA CLASIFICACION DE LAS EXPRESIONES
+	
+	
 	Expresion(Tokens id, String Clasif)
 	{
 		iden=id;
@@ -30,7 +35,8 @@ public class Expresion {
 	//NUEVA MODIFICACION
 	public String getClasificacion(){
 		return Clasificacion;
-	}	
+	}
+	
 	
 	public String getId() {
 		return iden.getToken();
@@ -49,7 +55,7 @@ public class Expresion {
 		//si el identificador estas vacio es por que no es una expresion D:
 		if(iden.getToken().equals(""))
 			return false;
-		return true; 
+		return true; // y pss aqui si hay expresion :D
 	}
 	
 	//para imprimir toda la expresion completa
